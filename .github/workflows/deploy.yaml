@@ -26,4 +26,3 @@ jobs:
           existing_bucket_name: elasticbeanstalk-ap-south-1-669405408560
           region: ap-south-1
           version_label: 12345
-          deployment_package: frontend.zip
