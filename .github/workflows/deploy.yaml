@@ -5,10 +5,10 @@ on:
       - main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build-and-deploy:
+    runs-on: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - run: docker build -t cygnetops/react-test -f Dockerfile.dev .
       - run: docker run -e CI=true cygnetops/react-test npm test
@@ -21,8 +21,9 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: frontend
-          environment_name: Frontend-env
+          application_name: "docker-react"
+          environment_name: "Docker-react-env"
           existing_bucket_name: elasticbeanstalk-ap-south-1-669405408560
           region: ap-south-1
-          version_label: 12345
+          version_label: ${{github.sha}}
+          deployment_package: frontend.zip
