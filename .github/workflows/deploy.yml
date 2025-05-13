@@ -13,9 +13,6 @@ jobs:
       - run: docker build -t cygnetops/react-test -f Dockerfile.dev .
       - run: docker run -e CI=true cygnetops/react-test npm test
 
-      - name: Generate deployment package
-        run: zip -r frontend.zip .
-
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
         with:
@@ -26,4 +23,3 @@ jobs:
           existing_bucket_name: elasticbeanstalk-ap-south-1-669405408560
           region: ap-south-1
           version_label: ${{github.sha}}
-          deployment_package: frontend.zip
