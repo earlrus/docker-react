@@ -13,6 +13,9 @@ jobs:
       - run: docker build -t cygnetops/react-test -f Dockerfile.dev .
       - run: docker run -e CI=true cygnetops/react-test npm test
 
+      - name: Generate deployment package
+        run: zip -r deploy-${{ github.sha }}.zip . -x '*.git*'
+
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
         with:
@@ -20,7 +23,8 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: "docker-react"
           environment_name: "Docker-react-env"
-          use_existing_version_if_available: true
+          use_existing_version_if_available: "true"
           existing_bucket_name: elasticbeanstalk-ap-south-1-669405408560
           region: ap-south-1
           version_label: ${{github.sha}}
+          deployment_package: deploy-${{ github.sha }}.zip
