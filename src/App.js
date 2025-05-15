@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>My pyara croco and boat</h1>
-        <p>New changes yeah!!</p>
+        <p>error corrected on deploy.yml file</p>
         <a
           className="App-link"
           href="https://reactjs.org"
