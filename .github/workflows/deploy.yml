@@ -22,8 +22,8 @@ jobs:
 
       - name: Build and push docker imag
         run: |
-          docker build -t cygnetops/react-test -f Dockerfile.dev .
-          docker push cygnetops/react-test
+          docker build -t ttna/my-app:latest -f Dockerfile.dev .
+          docker push ttna/my-app:latest
 
       - name: Deploy to elastic beanstalk
         env:
