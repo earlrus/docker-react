@@ -21,23 +21,11 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY}}
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
-          AWS_REGION:"ap-south-1"
+          AWS_REGION: "ap-south-1"
 
         run:
           eb init -p docker cygnetops/react-test --region ap-south-1
           eb deploy 
 
-      # - name: Generate deployment package
-      #   run: zip -r deploy-${{ github.sha }}.zip . -x '*.git*'
-
-      # - name: Deploy to EB
-      #   uses: einaregilsson/beanstalk-deploy@v21
-      #   with:
-      #     aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-      #     aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-      #     application_name: "docker-react"
-      #     environment_name: "Docker-react-env"
-      #     use_existing_version_if_available: "true"
-      #     region: ap-south-1
-      #     version_label: ${{github.sha}}
-      #     deployment_package: deploy-${{ github.sha }}.zip
+      
+    
