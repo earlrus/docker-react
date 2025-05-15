@@ -22,8 +22,8 @@ jobs:
 
       - name: Build and push docker imag
         run: |
-          docker build -t ttna/my-app:latest -f Dockerfile.dev .
-          docker push ttna/my-app:latest
+          docker build -t ttna/doc-react:latest -f Dockerfile.dev .
+          docker push ttna/doc-react:latest
 
       - name: Install and configure python, pip and eb cli
         run: |
@@ -37,5 +37,5 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
           AWS_REGION: "ap-south-1"
         run: |
-          eb init -p docker ttna/my-app:latest --region ap-south-1
+          eb init -p docker ttna/doc-react:latest --region ap-south-1
           eb deploy
