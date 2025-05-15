@@ -31,5 +31,5 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
           AWS_REGION: "ap-south-1"
         run: |
-          eb init -p docker cygnetops/react-test --region ap-south-1
+          eb init -p docker ttna/my-app:latest --region ap-south-1
           eb deploy
