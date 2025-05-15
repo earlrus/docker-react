@@ -18,7 +18,7 @@ jobs:
           password: ${{secrets.DOCKER_PASSWORD}}
 
       - name: Build and push docker image
-        run: 
+        run: | 
           docker build -t cygnetops/react-test -f Dockerfile.dev .
           docker push cygnetops/react-test
 
@@ -27,7 +27,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_KEY}}
           AWS_REGION: "ap-south-1"
 
-        run:
+        run: |
           eb init -p docker cygnetops/react-test --region ap-south-1
           eb deploy 
 
