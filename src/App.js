@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>My pyara croco and boat</h1>
-        <p>error corrected on deploy.yml file</p>
+        <p>error corrected on deploy.yml aws eb cli</p>
         <a
           className="App-link"
           href="https://reactjs.org"

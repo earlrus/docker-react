@@ -25,6 +25,12 @@ jobs:
           docker build -t ttna/my-app:latest -f Dockerfile.dev .
           docker push ttna/my-app:latest
 
+      - name: Install and configure python, pip and eb cli
+        run: |
+          sudo apt-get update
+          sudo apt-get install python3
+          pip install awsebcli --upgrade --user
+
       - name: Deploy to elastic beanstalk
         env:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY}}
